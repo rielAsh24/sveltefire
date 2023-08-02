@@ -1,6 +1,6 @@
 <nav
   id="sidebar"
-  class="pt-12 w-12 md:w-1/6 md:min-w-[16rem] bg-gray1 dark:bg-gray7 ease-in-out duration-300"
+  class="pt-12 w-12 md:w-1/6 md:min-w-[16rem] bg-gray1 dark:bg-gray7 ease-in-out duration-300 absolute md:static z-10 md:z-0 overflow-clip"
   >
   <div class="md:hidden">
     <button
@@ -25,7 +25,7 @@
   </div>
   <ul
     id="sidebarContent"
-    class="w-full pl-8 font-code mb-20 scale-x-0 md:scale-x-100 ease-in-out duration-300 block origin-left overflow-clip"
+    class="px-8 md:pl-8 font-code mb-20 invisible md:visible ease-in-out duration-300 block origin-left"
   >
     <li class="heading">guide</li>
     <li><a href="/">why?</a></li>
@@ -63,10 +63,10 @@
     showSideNav = !showSideNav;
     if(showSideNav) {
       sidebar.classList.replace('w-12', 'w-64');
-      content.classList.replace('scale-x-0', 'scale-x-100');
+      content.classList.replace('invisible', 'visible');
     }
     else {
-      content.classList.replace('scale-x-100', 'scale-x-0');
+      content.classList.replace('visible', 'invisible');
       sidebar.classList.replace('w-64', 'w-12');
     }
   }
@@ -79,7 +79,7 @@
 
 <style>
   li {
-    @apply dark:text-gray4 my-2;
+    @apply dark:text-gray4 my-2 animate-fade;
   }
   .heading {
     @apply my-6 text-gray6 dark:text-white;
@@ -92,5 +92,4 @@
       display: block !important;
     }
   }
-
 </style>

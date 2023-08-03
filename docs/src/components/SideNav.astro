@@ -2,10 +2,10 @@
   id="sidebar"
   class="pt-12 w-12 md:w-1/6 md:min-w-[16rem] bg-gray1 dark:bg-gray7 ease-in-out duration-300 absolute md:static z-10 md:z-0 overflow-clip"
   >
-  <div class="md:hidden">
+  <div class="w-full h-12 md:hidden">
     <button
       id="hamburger"
-      class="text-blue-600 dark:text-blue-400 p-2 focus:outline-none"
+      class="text-blue-600 dark:text-blue-400 p-3 focus:outline-none float-left ease-in-out duration-300"
     >
       <svg
         class="w-6 h-6"
@@ -15,10 +15,20 @@
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
+          id="open"
+          class=""
           stroke-linecap="round"
           stroke-linejoin="round"
           stroke-width="2"
           d="M4 6h16M4 12h16m-7 6h7"
+        ></path>
+        <path
+          id="close"
+          class="hidden"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"
         ></path>
       </svg>
     </button>
@@ -56,6 +66,9 @@
 <script>
   const sidebar = document.getElementById('sidebar');
   const content = document.getElementById('sidebarContent');
+  const hamburger = document.getElementById('hamburger');
+  const opensvg = document.getElementById('open');
+  const closesvg = document.getElementById('close');
 
   let showSideNav = false;
   // Toggle sidebar
@@ -64,11 +77,15 @@
     if(showSideNav) {
       sidebar.classList.replace('w-12', 'w-64');
       content.classList.replace('invisible', 'visible');
+      hamburger.classList.replace('float-left', 'float-right');
     }
     else {
       content.classList.replace('visible', 'invisible');
       sidebar.classList.replace('w-64', 'w-12');
+      hamburger.classList.replace('float-right', 'float-left');
     }
+    opensvg.classList.toggle('hidden');
+    closesvg.classList.toggle('hidden');
   }
 
   // Add click event to hamburger button
@@ -79,7 +96,7 @@
 
 <style>
   li {
-    @apply dark:text-gray4 my-2 animate-fade;
+    @apply dark:text-gray4 my-2;
   }
   .heading {
     @apply my-6 text-gray6 dark:text-white;
